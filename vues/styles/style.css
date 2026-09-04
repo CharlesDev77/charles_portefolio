@@ -1,0 +1,305 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   PAGE
+========================= */
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(circle at center, #211d14 0%, #0d0d0d 45%, #050505 100%);
+
+    color: #fff;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   CONTENEUR PRINCIPAL
+========================= */
+
+.construction {
+    width: min(90%, 800px);
+    text-align: center;
+
+    position: relative;
+
+    padding: 60px 30px;
+
+    animation: pageAppear 1.5s ease forwards;
+}
+
+
+/* =========================
+   LIGNES DORÉES
+========================= */
+
+.gold-line {
+    width: 0;
+    height: 1px;
+
+    margin: 0 auto;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #c9a227,
+        #f5d76e,
+        #c9a227,
+        transparent
+    );
+
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+
+    animation: lineAppear 1.5s ease forwards;
+}
+
+
+/* =========================
+   CONTENU
+========================= */
+
+.content {
+    padding: 55px 20px;
+}
+
+
+/* Petit texte */
+
+.small-text {
+    color: #c9a227;
+
+    font-size: 13px;
+    letter-spacing: 7px;
+
+    margin-bottom: 25px;
+
+    opacity: 0;
+
+    animation: fadeUp 1s ease 0.4s forwards;
+}
+
+
+/* =========================
+   TITRE
+========================= */
+
+h1 {
+    font-size: clamp(40px, 7vw, 75px);
+
+    font-weight: normal;
+
+    line-height: 1.1;
+
+    letter-spacing: 2px;
+
+    opacity: 0;
+
+    animation: messageReveal 1.4s ease 0.7s forwards;
+}
+
+h1 span {
+    color: #d4af37;
+
+    text-shadow:
+        0 0 10px rgba(212, 175, 55, 0.35),
+        0 0 30px rgba(212, 175, 55, 0.15);
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message {
+    margin-top: 30px;
+
+    color: #cfcfcf;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 16px;
+
+    letter-spacing: 3px;
+
+    opacity: 0;
+
+    animation: fadeUp 1s ease 1.5s forwards;
+}
+
+
+/* =========================
+   LOADER
+========================= */
+
+.loader {
+    width: 180px;
+    height: 2px;
+
+    margin: 45px auto 0;
+
+    background: rgba(255, 255, 255, 0.1);
+
+    overflow: hidden;
+
+    position: relative;
+
+    opacity: 0;
+
+    animation: fadeUp 1s ease 1.8s forwards;
+}
+
+.loader span {
+    position: absolute;
+
+    left: -50%;
+
+    top: 0;
+
+    width: 50%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #d4af37,
+        #f5d76e,
+        transparent
+    );
+
+    box-shadow: 0 0 10px #d4af37;
+
+    animation: loading 2.5s ease-in-out infinite;
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes pageAppear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+@keyframes lineAppear {
+
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/*
+   Animation principale du message
+   Le texte monte et apparaît
+   progressivement.
+*/
+
+@keyframes messageReveal {
+
+    0% {
+        opacity: 0;
+        transform: translateY(45px);
+        filter: blur(8px);
+    }
+
+    60% {
+        opacity: 0.8;
+        filter: blur(2px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+
+@keyframes loading {
+
+    0% {
+        left: -50%;
+    }
+
+    50% {
+        left: 100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+    .construction {
+        padding: 40px 15px;
+    }
+
+    .content {
+        padding: 45px 10px;
+    }
+
+    .small-text {
+        letter-spacing: 4px;
+    }
+
+    h1 {
+        font-size: 42px;
+    }
+
+    .message {
+        font-size: 14px;
+        letter-spacing: 2px;
+    }
+}
